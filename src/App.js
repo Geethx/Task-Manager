@@ -21,7 +21,9 @@ function App() {
     };
 
     const handleDeleteTask = (index) => {
-      const updatedTasks = tasks.filter((task, i) => i !== index);
+      const updatedTasks = tasks.filter((_, i) => {
+        return i !== index;
+      }); 
       setTasks(updatedTasks);
     };
 
@@ -32,7 +34,10 @@ function App() {
       newTask={newTask}
       setNewTask={setNewTask}
       />
-      <TaskList tasks={tasks} />    
+      <TaskList tasks={tasks}
+      handleToggleComplete={handleToggleComplete}
+      handleDeleteTask={handleDeleteTask}
+      />    
     </div>
   );
 }
